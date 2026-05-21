@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="REU"
-run/main_scene="uid://cdhp1kfceybv"
+run/main_scene="uid://efac7yvx4wri"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*uid://sule8llxmx8a"
 
 [display]
 

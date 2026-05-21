@@ -6,5 +6,6 @@ extends Node2D
 func _on_right_trigger_body_entered(body: Node) -> void:
 	# Safety check: ONLY trigger if the item entering the zone is our actual player
 	if body == player:
-		# Completely swap this scene file out for the Langdale map
-		get_tree().change_scene_to_file("res://Langdale.tscn")
+		GameState.coming_from = "left"
+		# Using .call_deferred prevents the engine physics crash!
+		get_tree().call_deferred("change_scene_to_file", "res://assets/scenes/Langdale.tscn")
