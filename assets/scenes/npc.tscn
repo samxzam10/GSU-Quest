@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://iy2veedolgj0"]
+
+[ext_resource type="Script" uid="uid://dh54i5v154oap" path="res://assets/script/player/npc.gd" id="1_qx2m1"]
+[ext_resource type="Texture2D" uid="uid://jiisstu78cos" path="res://assets/IDLE/base_idle_strip9.png" id="2_d8xgo"]
+[ext_resource type="Texture2D" uid="uid://ea4l2c2jkm4c" path="res://assets/IDLE/spikeyhair_idle_strip9.png" id="3_whlmi"]
+
+[sub_resource type="Animation" id="Animation_qx2m1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HairSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OutfitSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_d8xgo"]
+resource_name = "idle"
+length = 0.9
+loop_mode = 1
+step = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HairSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OutfitSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_asfdv"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+step = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0, 0, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HairSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0, 0, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OutfitSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0, 0, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qx2m1"]
+_data = {
+&"RESET": SubResource("Animation_qx2m1"),
+&"idle": SubResource("Animation_d8xgo"),
+&"walk": SubResource("Animation_asfdv")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_whlmi"]
+
+[node name="NPC" type="CharacterBody2D" unique_id=785805554]
+script = ExtResource("1_qx2m1")
+
+[node name="BodySprite" type="Sprite2D" parent="." unique_id=1243926606]
+position = Vector2(0, -7)
+texture = ExtResource("2_d8xgo")
+hframes = 9
+
+[node name="HairSprite" type="Sprite2D" parent="." unique_id=1226461319]
+position = Vector2(0, -7)
+texture = ExtResource("3_whlmi")
+hframes = 9
+
+[node name="OutfitSprite" type="Sprite2D" parent="." unique_id=1187106469]
+
+[node name="QuestionIndicator" type="Sprite2D" parent="." unique_id=1916566527]
+
+[node name="WanderTimer" type="Timer" parent="." unique_id=22090349]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=164335255]
+libraries/ = SubResource("AnimationLibrary_qx2m1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1464614015]
+shape = SubResource("CircleShape2D_whlmi")
+
+[connection signal="timeout" from="WanderTimer" to="." method="_on_timer_timeout"]
