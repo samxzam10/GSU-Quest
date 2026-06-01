@@ -32,3 +32,7 @@ func update_animation(motion: Vector2):
 	else:
 		# Tell the state machine to switch to the Idle state
 		playback.travel("Idle")
+
+
+func _on_bottom_trigger_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

@@ -4,13 +4,35 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 @onready var camera = $Player/Camera2D
 
+func _ready() -> void:
+	if Global.use_spawn_position:
+		# Teleport the player to the side marker we saved from the last scene
+		player.global_position = Global.player_spawn_position
+		# Reset the flag so future fresh reloads don't break
+		Global.use_spawn_position = false
+	else:
+		# Fresh game start position!
+		player.global_position = Vector2(0, 0)
+		
 func _on_left_trigger_body_entered(body: Node) -> void:
 	# Safety check: ONLY trigger if the item entering the zone is our actual player
 	if body == player:
+		# Tell Global where the cat should appear back on Scene 1's map
+		Global.player_spawn_position = Vector2(0, -30)
+		Global.use_spawn_position = true
+		
 		# Completely swap this scene file out and load back into the starting world view
 		get_tree().call_deferred("change_scene_to_file", "res://assets/scenes/Scene 1.tscn")
- 
 
+func _on_right_trigger_body_entered(body: Node) -> void:
+	# Safety check: ONLY trigger if the item entering the zone is our actual player
+	if body == player:
+		# Tell Global where the cat should appear on South's map (e.g., coming from the left)
+		Global.player_spawn_position = Vector2(-200, 0)
+		Global.use_spawn_position = true
+		
+		# Completely swap this scene file out and load into the South world view
+		get_tree().call_deferred("change_scene_to_file", "res://assets/scenes/South.tscn")
 
 func _on_camera_boundary_body_entered(body: Node) -> void:
 	# Make sure it's the player entering the zone
@@ -29,7 +51,7 @@ func _on_camera_boundary_body_entered(body: Node) -> void:
 		var limit_bottom = limit_top + shape_rect.size.y
 		
 		# 4. Apply these limits directly to the Player's internal camera
-		var camera = body.get_node("Camera2D")
+		camera = body.get_node("Camera2D")
 		camera.limit_left = limit_left
 		camera.limit_right = limit_right
 		camera.limit_top = limit_top

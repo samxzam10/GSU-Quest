@@ -5,7 +5,15 @@ extends Node2D
 @onready var camera: Camera2D = $Player/Camera2D
 @onready var boundary_shape:  CollisionShape2D = $CameraBoundary/CollisionShape2D
 
-
+func _ready() -> void:
+	if Global.use_spawn_position:
+		# Teleport the player to the side marker we saved from the last scene
+		player.global_position = Global.player_spawn_position
+		# Reset the flag so future fresh reloads don't break
+		Global.use_spawn_position = false
+	else:
+		# Fresh game start position!
+		player.global_position = Vector2(0, 0)
 	
 	
 	
