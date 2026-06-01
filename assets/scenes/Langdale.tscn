@@ -6646,6 +6646,7 @@ texture = ExtResource("5_xy0nj")
 54:39/0 = 0
 55:39/0 = 0
 56:39/0 = 0
+56:39/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 57:39/0 = 0
 58:39/0 = 0
 59:39/0 = 0
@@ -42812,7 +42813,7 @@ shape = SubResource("RectangleShape2D_yass7")
 [node name="MapBoundaries" type="StaticBody2D" parent="." unique_id=1150782224]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapBoundaries" unique_id=1969712363]
-position = Vector2(-50, -132)
+position = Vector2(-71, -132)
 shape = SubResource("RectangleShape2D_sq0be")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MapBoundaries" unique_id=2108083755]

@@ -4,13 +4,6 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 @onready var camera = $Player/Camera2D
 
-#func _ready() -> void:
-	## Set limits for the Langdale map dimensions
-	#camera.limit_left = 0
-	#camera.limit_top = 0
-	#camera.limit_right = 1500  # Adjust to the pixel width of your Langdale tiles
-	#camera.limit_bottom = 800  # Adjust to the pixel height of your Langdale tiles
-
 func _on_left_trigger_body_entered(body: Node) -> void:
 	# Safety check: ONLY trigger if the item entering the zone is our actual player
 	if body == player:
