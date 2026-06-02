@@ -15,12 +15,9 @@ func _ready() -> void:
 
 # --- BOTTOM TRIGGER (Goes back down to Langdale) ---
 func _on_bottom_trigger_body_entered(body: Node) -> void:
-	# Safety check: ONLY trigger if the item entering the zone is our actual player
-	if body == player:
-		# Tell Global where the cat should appear at the top side of Langdale's map
-		# (Adjust this Vector2 based on where your top road/sidewalk hits the screen edge)
-		Global.player_spawn_position = Vector2(0, -320)
-		Global.use_spawn_position = true
+	if body.name == "Player":
+		# REPLACE THESE NUMBERS with the exact Transform coordinates you just found!
+		Global.player_spawn_position = Vector2(940, -32) 
 		
-		# Completely swap this scene file out and load back into Langdale
+		Global.use_spawn_position = true
 		get_tree().call_deferred("change_scene_to_file", "res://assets/scenes/Langdale.tscn")
