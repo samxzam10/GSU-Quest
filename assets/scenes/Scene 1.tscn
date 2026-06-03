@@ -4397,10 +4397,10 @@ size = Vector2(16, 152)
 size = Vector2(243, 228)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2v2kr"]
-size = Vector2(20, 228)
+size = Vector2(26, 520)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_adj51"]
-size = Vector2(236, 16)
+size = Vector2(657, 27)
 
 [node name="World" type="Node2D" unique_id=1361619363]
 script = ExtResource("1_wywid")
@@ -4452,45 +4452,73 @@ shape = SubResource("RectangleShape2D_adj51")
 
 [node name="NPC" parent="." unique_id=785805554 instance=ExtResource("7_2v2kr")]
 position = Vector2(24, 73)
+move_speed = null
+target_building_name = null
 
 [node name="NPC2" parent="." unique_id=404156016 instance=ExtResource("7_2v2kr")]
 position = Vector2(-15, -49)
+move_speed = null
+target_building_name = null
 
 [node name="NPC3" parent="." unique_id=1403548709 instance=ExtResource("7_2v2kr")]
 position = Vector2(-15, -49)
+move_speed = null
+target_building_name = null
 
 [node name="NPC4" parent="." unique_id=1130903006 instance=ExtResource("7_2v2kr")]
 position = Vector2(-99, -5)
+move_speed = null
+target_building_name = null
 
 [node name="NPC5" parent="." unique_id=1969882974 instance=ExtResource("7_2v2kr")]
 position = Vector2(-85, 48)
+move_speed = null
+target_building_name = null
 
 [node name="NPC6" parent="." unique_id=1398780057 instance=ExtResource("7_2v2kr")]
 position = Vector2(78, -32)
+move_speed = null
+target_building_name = null
 
 [node name="NPC7" parent="." unique_id=1375872249 instance=ExtResource("7_2v2kr")]
 position = Vector2(-15, -49)
+move_speed = null
+target_building_name = null
 
 [node name="NPC8" parent="." unique_id=1483719226 instance=ExtResource("7_2v2kr")]
 position = Vector2(68, 16)
+move_speed = null
+target_building_name = null
 
 [node name="NPC9" parent="." unique_id=1769749161 instance=ExtResource("7_2v2kr")]
 position = Vector2(84, -71)
+move_speed = null
+target_building_name = null
 
 [node name="NPC10" parent="." unique_id=154908550 instance=ExtResource("7_2v2kr")]
 position = Vector2(-15, -49)
+move_speed = null
+target_building_name = null
 
 [node name="NPC11" parent="." unique_id=999668188 instance=ExtResource("7_2v2kr")]
 position = Vector2(-15, -49)
+move_speed = null
+target_building_name = null
 
 [node name="NPC12" parent="." unique_id=1386010364 instance=ExtResource("7_2v2kr")]
 position = Vector2(-41, 69)
+move_speed = null
+target_building_name = null
 
 [node name="NPC13" parent="." unique_id=1558205098 instance=ExtResource("7_2v2kr")]
 position = Vector2(-15, -49)
+move_speed = null
+target_building_name = null
 
 [node name="NPC14" parent="." unique_id=928528572 instance=ExtResource("7_2v2kr")]
 position = Vector2(-77, -73)
+move_speed = null
+target_building_name = null
 
 [connection signal="body_entered" from="Right_Trigger" to="." method="_on_right_trigger_body_entered"]
 [connection signal="body_entered" from="CameraBoundary" to="." method="_on_camera_boundary_body_entered"]

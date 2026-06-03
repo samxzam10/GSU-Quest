@@ -14,16 +14,34 @@ func _ready() -> void:
 	else:
 		# Fresh game start position!
 		player.global_position = Vector2(0, 0)
-	
+	# Paste this at the absolute bottom of func _ready() inside your map scripts:
+	if Global.active_mission and Global.mission_npc_file_path != "":
+		# 1. Load the NPC template file back into active memory
+		var follower_scene = load(Global.mission_npc_file_path)
+		var follower = follower_scene.instantiate()
+		
+		# 2. Tell the new instance it is already following the player cat
+		follower.current_state = follower.State.FOLLOWING
+		follower.player_in_range = player # Pairs it to this current map's player node
+		follower.target_building_name = Global.mission_target_building
+		
+		# 3. Position the follower right next to where your cat spawns
+		follower.global_position = player.global_position + Vector2(-30, 0)
+		
+		# 4. Spawn them into the live map world
+		add_child(follower)
+		print("🎒 Companion successfully moved through the door into the new scene!")
 	
 	
 	
 	
 func _on_right_trigger_body_entered(body: Node) -> void:
-	# Safety check: ONLY trigger if the item entering the zone is our actual player
-	if body == player:
-		GameState.coming_from = "left"
-		# Using .call_deferred prevents the engine physics crash!
+	# 🐱 Secure the door so only the player can trip it
+	if body.name == "Player":
+		Global.player_spawn_position = Vector2(0,0) # Open space on Langdale
+		Global.use_spawn_position = true
+		
+		# Move to Langdale
 		get_tree().call_deferred("change_scene_to_file", "res://assets/scenes/Langdale.tscn")
 
 
@@ -49,3 +67,4 @@ func _on_camera_boundary_body_entered(body: Node) -> void:
 		camera.limit_right = limit_right
 		camera.limit_top = limit_top
 		camera.limit_bottom = limit_bottom
+		

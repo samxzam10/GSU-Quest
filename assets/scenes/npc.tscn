@@ -154,14 +154,6 @@ hframes = 9
 
 [node name="OutfitSprite" type="Sprite2D" parent="." unique_id=1187106469]
 
-[node name="QuestionIndicator" type="Label" parent="." unique_id=1094728191]
-visible = false
-offset_left = -2.0
-offset_top = -38.0
-offset_right = 3.0
-offset_bottom = -15.0
-text = "!"
-
 [node name="WanderTimer" type="Timer" parent="." unique_id=22090349]
 one_shot = true
 
@@ -177,4 +169,22 @@ shape = SubResource("CircleShape2D_whlmi")
 position = Vector2(1, -6)
 shape = SubResource("CircleShape2D_iddlt")
 
+[node name="QuestionIndicator" type="Label" parent="." unique_id=1094728191]
+visible = false
+offset_left = -2.0
+offset_top = -38.0
+offset_right = 3.0
+offset_bottom = -15.0
+text = "!"
+
+[node name="DialogueLabel" type="Label" parent="." unique_id=995623961]
+offset_left = -6.0
+offset_top = -45.0
+offset_right = 15.0
+offset_bottom = -22.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="timeout" from="WanderTimer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
