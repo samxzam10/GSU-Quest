@@ -4424,6 +4424,7 @@ position = Vector2(4, 57)
 shape = SubResource("RectangleShape2D_5etsr")
 
 [node name="CameraBoundary" type="Area2D" parent="." unique_id=1325563992]
+visible = false
 position = Vector2(9, 30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBoundary" unique_id=826911581]
@@ -4431,6 +4432,7 @@ position = Vector2(-9, -24)
 shape = SubResource("RectangleShape2D_wywid")
 
 [node name="MapBoundaries" type="StaticBody2D" parent="." unique_id=1307859087]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapBoundaries" unique_id=443360959]
 position = Vector2(-125, 9)

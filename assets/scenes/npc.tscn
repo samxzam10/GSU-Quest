@@ -136,6 +136,9 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_whlmi"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_iddlt"]
+radius = 17.029387
+
 [node name="NPC" type="CharacterBody2D" unique_id=785805554]
 script = ExtResource("1_qx2m1")
 
@@ -151,7 +154,13 @@ hframes = 9
 
 [node name="OutfitSprite" type="Sprite2D" parent="." unique_id=1187106469]
 
-[node name="QuestionIndicator" type="Sprite2D" parent="." unique_id=1916566527]
+[node name="QuestionIndicator" type="Label" parent="." unique_id=1094728191]
+visible = false
+offset_left = -2.0
+offset_top = -38.0
+offset_right = 3.0
+offset_bottom = -15.0
+text = "!"
 
 [node name="WanderTimer" type="Timer" parent="." unique_id=22090349]
 one_shot = true
@@ -161,5 +170,11 @@ libraries/ = SubResource("AnimationLibrary_qx2m1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1464614015]
 shape = SubResource("CircleShape2D_whlmi")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1500589343]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=677061112]
+position = Vector2(1, -6)
+shape = SubResource("CircleShape2D_iddlt")
 
 [connection signal="timeout" from="WanderTimer" to="." method="_on_timer_timeout"]

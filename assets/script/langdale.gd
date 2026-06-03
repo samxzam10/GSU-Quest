@@ -52,7 +52,7 @@ func _on_left_trigger_body_entered(body: Node) -> void:
 	# Safety check: ONLY trigger if the item entering the zone is our actual player
 	if body == player:
 		# Tell Global where the cat should appear back on Scene 1's map
-		Global.player_spawn_position = Vector2(0, -30)
+		Global.player_spawn_position = Vector2(93, -3)
 		Global.use_spawn_position = true
 		
 		# Completely swap this scene file out and load back into the starting world view

@@ -44679,6 +44679,8 @@ position = Vector2(264, 68)
 [node name="NPC15" parent="." unique_id=805117029 instance=ExtResource("12_sq0be")]
 position = Vector2(61, -135)
 
+[node name="Langdale_Dropoff" type="Area2D" parent="." unique_id=907901985]
+
 [connection signal="body_entered" from="Right_Trigger" to="." method="_on_right_trigger_body_entered"]
 [connection signal="body_entered" from="Left_Trigger" to="." method="_on_left_trigger_body_entered"]
 [connection signal="body_entered" from="CameraBoundary" to="." method="_on_camera_boundary_body_entered"]

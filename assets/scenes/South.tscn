@@ -5622,7 +5622,9 @@ texture = ExtResource("3_c4u6y")
 64:45/0 = 0
 64:45/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 65:45/0 = 0
+65:45/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 66:45/0 = 0
+66:45/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 67:45/0 = 0
 67:45/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 68:45/0 = 0
@@ -18626,11 +18628,14 @@ position = Vector2(73, 22)
 shape = SubResource("RectangleShape2D_qn7eh")
 
 [node name="Camera_Boundary" type="Area2D" parent="." unique_id=138989321]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera_Boundary" unique_id=520750888]
 position = Vector2(68, -198.5)
 shape = SubResource("RectangleShape2D_ml2dv")
 
 [node name="MapBoundaries" type="Area2D" parent="." unique_id=223073254]
+
+[node name="South_Dropoff" type="Area2D" parent="." unique_id=726960705]
 
 [connection signal="body_entered" from="Bottom_Trigger" to="." method="_on_bottom_trigger_body_entered"]
