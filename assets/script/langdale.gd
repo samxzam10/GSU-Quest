@@ -4,30 +4,37 @@ extends Node2D
 @onready var camera = $Player/Camera2D
 
 func _ready() -> void:
-	# 1. Handle player teleportation when transferring between maps
+	# 1. Level Positioning: Sets the player's physical coordinates if they arrived 
+	# from another scene, then resets the tracking flag.
 	if Global.use_spawn_position:
 		player.global_position = Global.player_spawn_position
 		Global.use_spawn_position = false
 		
-	# 2. Force camera limits to calculate instantly on map load
+	# 2. Viewport Initialization: Dynamically locks the camera window to the map boundaries.
 	update_camera_limits()
-	# Paste this at the absolute bottom of func _ready() inside your map scripts:
+	
+	# 3. Persistent Quest Persistence: Checks if an escort mission is active across scene loads.
 	if Global.active_mission and Global.mission_npc_file_path != "":
-		# 1. Load the NPC template file back into active memory
+		# Runtime Instantiation: Dynamically loads and instantiates the companion scene template
 		var follower_scene = load(Global.mission_npc_file_path)
 		var follower = follower_scene.instantiate()
 		
-		# 2. Tell the new instance it is already following the player cat
-		follower.current_state = follower.State.FOLLOWING
-		follower.player_in_range = player # Pairs it to this current map's player node
-		follower.target_building_name = Global.mission_target_building
-		
-		# 3. Position the follower right next to where your cat spawns
-		follower.global_position = player.global_position + Vector2(-30, 0)
-		
-		# 4. Spawn them into the live map world
-		add_child(follower)
-		print("🎒 Companion successfully moved through the door into the new scene!")
+		var current_player = get_node_or_null("Player")
+		if current_player:
+			# State Initialization: Connects the new map's player instance to the companion's AI logic,
+			# shifts their state machine directly to FOLLOWING, and copies over the original objective data.
+			follower.player_in_range = current_player
+			follower.current_state = follower.State.FOLLOWING
+			follower.target_building_name = Global.mission_target_building
+			
+			# Collision Avoidance: Offsets the spawn location slightly to avoid clipping into the player's physics capsule
+			follower.global_position = current_player.global_position + Vector2(-25, 0)
+			
+			add_child(follower)
+			print("🎒 Companion successfully hooked onto the player in this scene!")
+
+# Procedural Camera Bounds: Automatically queries the collision shape of the map bounding box
+# and maps its edges directly to the 2D camera viewport limits.
 func update_camera_limits() -> void:
 	var collision_shape = $Camera_Boundary/CollisionShape2D
 	if collision_shape and collision_shape.shape:
@@ -45,25 +52,26 @@ func update_camera_limits() -> void:
 			camera.limit_top = limit_top
 			camera.limit_bottom = limit_bottom
 
-# --- SCREEN TRANSITION TRIGGERS ---
+# --- SCENE MATRIX TRANSITIONS ---
 
-# ➡️ RIGHT TRIGGER: Goes to Classroom South
+# Level Handoff (East Boundary): Archives coordinates and changes scene context to Classroom South
 func _on_right_trigger_body_entered(body: Node) -> void:
 	if body.name == "Player":
-		# Your exact custom coordinates for entering Classroom South
 		Global.player_spawn_position = Vector2(0, 0) 
 		Global.use_spawn_position = true
-		get_tree().call_deferred("change_scene_to_file", "res://assets/scenes/South.tscn")
+		get_tree().call_deferred("change_scene_to_file", "res://assets/scenes/South.scn")
 
-# ⬅️ LEFT TRIGGER: Goes back to Scene 1
+# Level Handoff (West Boundary): Archives coordinates and changes scene context back to Scene 1
 func _on_left_trigger_body_entered(body: Node) -> void:
-	# 🐱 ONLY the cat can trip this wire!
 	if body.name == "Player":
-		Global.player_spawn_position = Vector2(93, 0) # Drops player out in the open on Scene 1
+		Global.player_spawn_position = Vector2(93, 0)
 		Global.use_spawn_position = true
-		get_tree().call_deferred("change_scene_to_file", "res://assets/scenes/Scene 1.tscn")
+		get_tree().call_deferred("change_scene_to_file", "res://assets/scenes/Scene 1.scn")
 
-# Camera Boundary Backup Signal
+# Safety Listener: Re-syncs the viewport geometry boundaries if the player forces a sudden re-entry
 func _on_camera_boundary_body_entered(body: Node2D) -> void:
 	if body == player:
 		update_camera_limits()
+
+func _on_body_entered(body: Node2D) -> void:
+	pass
