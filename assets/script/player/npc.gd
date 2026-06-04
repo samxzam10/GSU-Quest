@@ -156,8 +156,9 @@ func _on_interaction_area_body_entered(body: Node) -> void:
 			Global.mission_npc_hair = chosen_hair
 			Global.mission_npc_hair_color = hair_color
 			
-			print("Take me to " + target_building_name + "!")
-			show_dialogue("Excuse me... please\ntake me to\n" + target_building_name + "!")
+			var ai_generated_text: String = Global.generate_ai_dialogue(target_building_name)
+			print("AI Output Log: " + ai_generated_text)
+			show_dialogue(ai_generated_text)
 			
 			await get_tree().create_timer(2.5).timeout
 			
@@ -199,8 +200,9 @@ func interact(player_node: CharacterBody2D) -> void:
 		Global.mission_npc_hair = chosen_hair
 		Global.mission_npc_hair_color = hair_color
 		
-		print("Take me to " + target_building_name + "!")
-		show_dialogue("Excuse me... please\ntake me to\n" + target_building_name + "!")
+		var ai_generated_text: String = Global.generate_ai_dialogue(target_building_name)
+		print("AI Output Log: " + ai_generated_text)
+		show_dialogue(ai_generated_text)
 
 func complete_task() -> void:
 	# Quest Resolution: Freezes entity processing and clears out global tracker states upon arrival at the target building
