@@ -283,12 +283,18 @@ func _on_timer_timeout() -> void:
 		wander_timer.start(randf_range(1.0, 3.0))
 
 func show_dialogue(text: String) -> void:
-	# Dynamic Text Rendering: Programs UI layout controls and pushes formatting overrides directly to the overhead Label
 	if has_node("DialogueLabel"):
 		var label = $DialogueLabel
-		label.add_theme_font_size_override("font_size", 6)
+		
+		# FORCE CRISP RENDERING: Disables vector sub-sampling blur instantly
+		label.texture_filter = 1
+		
+		# ENLARGE SUB-PIXELS: Scale the node up so the default font has enough pixel real estate
+		label.scale = Vector2(0.5, 0.5) # Adjust this if it's too big/small in your bubble
+		label.add_theme_font_size_override("font_size", 16) # Bumps the base resolution of the font up
+		
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		label.custom_minimum_size = Vector2(70, 20)
+		label.custom_minimum_size = Vector2(140, 40)
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		
 		label.text = text

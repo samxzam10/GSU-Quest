@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dh54i5v154oap" path="res://assets/script/player/npc.gd" id="1_qx2m1"]
 [ext_resource type="Texture2D" uid="uid://jiisstu78cos" path="res://assets/IDLE/base_idle_strip9.png" id="2_d8xgo"]
 [ext_resource type="Texture2D" uid="uid://ea4l2c2jkm4c" path="res://assets/IDLE/spikeyhair_idle_strip9.png" id="3_whlmi"]
+[ext_resource type="FontFile" uid="uid://f2n47dinh6si" path="res://assets/m5x7.ttf" id="4_iddlt"]
 
 [sub_resource type="Animation" id="Animation_qx2m1"]
 length = 0.001
@@ -178,12 +179,15 @@ offset_bottom = -15.0
 text = "!"
 
 [node name="DialogueLabel" type="Label" parent="." unique_id=995623961]
+texture_filter = 1
 offset_left = -6.0
 offset_top = -45.0
 offset_right = 15.0
 offset_bottom = -22.0
+theme_override_fonts/font = ExtResource("4_iddlt")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [connection signal="timeout" from="WanderTimer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]

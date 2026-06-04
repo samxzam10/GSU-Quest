@@ -18614,7 +18614,7 @@ size = Vector2(26, 520)
 size = Vector2(657, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qn7eh"]
-size = Vector2(240, 26)
+size = Vector2(271, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ml2dv"]
 size = Vector2(608, 491)
@@ -18653,7 +18653,7 @@ shape = SubResource("RectangleShape2D_adj51")
 [node name="Bottom_Trigger" type="Area2D" parent="." unique_id=2060702725]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom_Trigger" unique_id=1261401977]
-position = Vector2(103, 22)
+position = Vector2(87.5, 22)
 shape = SubResource("RectangleShape2D_qn7eh")
 
 [node name="Camera_Boundary" type="Area2D" parent="." unique_id=138989321]
